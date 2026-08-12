@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTech AI – Intelligence Platform</title>
+    <meta name="description" content="Real-time AI-powered financial predictions: churn, credit, loan approval, and RBI compliance Q&A.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-layout">
+
+    <!-- ─── SIDEBAR ─────────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <div class="logo-icon"><i class="ph ph-waveform"></i></div>
+            <div class="logo-text">
+                <h2>FinTech AI</h2>
+                <span>INTELLIGENCE PLATFORM</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="ph ph-squares-four"></i> Dashboard
+            </a>
+            <a href="#" class="nav-item" data-page="credit">
+                <i class="ph ph-shield-check"></i> Credit Assessment
+            </a>
+            <a href="#" class="nav-item" data-page="churn">
+                <i class="ph ph-user-minus"></i> Churn Prediction
+            </a>
+            <a href="#" class="nav-item" data-page="lead">
+                <i class="ph ph-users"></i> Lead Scoring
+            </a>
+            <a href="#" class="nav-item" data-page="compliance">
+                <i class="ph ph-book-open"></i> Compliance Q&A
+            </a>
+        </nav>
+
+        <div class="system-status">
+            <div class="status-header">SYSTEM STATUS</div>
+            <div class="status-item">
+                <span>ML Models</span>
+                <span class="status-badge online"><span class="dot"></span> Online</span>
+            </div>
+            <div class="status-item">
+                <span>LLM (Groq)</span>
+                <span class="status-badge online"><span class="dot"></span> Online</span>
+            </div>
+            <div class="status-item">
+                <span>Vector DB</span>
+                <span class="status-badge online"><span class="dot"></span> Online</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ─── MAIN ─────────────────────────────────────────────────────────── -->
+    <main class="main-content">
+
+        <!-- ══════════════ DASHBOARD ══════════════ -->
+        <div id="page-dashboard" class="page active">
+            <header class="top-header">
+                <div class="header-titles">
+                    <div class="title-with-icon"><i class="ph ph-squares-four"></i><h1>Dashboard</h1></div>
+                    <p>Real-time AI prediction overview</p>
+                </div>
+                <div class="live-indicator"><i class="ph ph-activity"></i> Live &bull; Updated now</div>
+            </header>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="card-header">
+                        <div class="card-icon blue"><i class="ph ph-squares-four"></i></div>
+                        <div class="trend positive"><i class="ph ph-trend-up"></i> +12%</div>
+                    </div>
+                    <div class="card-value">258</div>
+                    <div class="card-label">Total Assessments</div>
+                </div>
+                <div class="metric-card">
+                    <div class="card-header">
+                        <div class="card-icon red"><i class="ph ph-warning"></i></div>
+                        <div class="trend positive"><i class="ph ph-trend-up"></i> +3</div>
+                    </div>
+                    <div class="card-value">23</div>
+                    <div class="card-label">Fraud Alerts (24h)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="card-header">
+                        <div class="card-icon orange"><i class="ph ph-shield-warning"></i></div>
+                        <div class="trend negative"><i class="ph ph-trend-down"></i> -5%</div>
+                    </div>
+                    <div class="card-value">38</div>
+                    <div class="card-label">High Risk Loans</div>
+                </div>
+                <div class="metric-card">
+                    <div class="card-header">
+                        <div class="card-icon default"><i class="ph ph-user"></i></div>
+                        <div class="trend positive"><i class="ph ph-trend-up"></i> +8</div>
+                    </div>
+                    <div class="card-value">44</div>
+                    <div class="card-label">Churn Risks</div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-panel">
+                    <div class="panel-header-flex">
+                        <h2>Assessment Volume</h2>
+                        <div class="chart-legend-custom">
+                            <span class="legend-item"><span class="ldot teal"></span> Assessments</span>
+                            <span class="legend-item"><span class="ldot redd"></span> Fraud</span>
+                        </div>
+                    </div>
+                    <div class="canvas-container"><canvas id="volumeChart"></canvas></div>
+                </div>
+                <div class="chart-panel">
+                    <h2>Risk Distribution</h2>
+                    <div class="donut-wrap">
+                        <div style="position:relative;height:180px;width:180px;margin:20px auto 0">
+                            <canvas id="riskChart"></canvas>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="dl-item"><span class="ldot" style="background:#10b981;border-radius:2px"></span>Low <strong>142</strong></div>
+                            <div class="dl-item"><span class="ldot" style="background:#f59e0b;border-radius:2px"></span>Medium <strong>67</strong></div>
+                            <div class="dl-item"><span class="ldot" style="background:#f97316;border-radius:2px"></span>High <strong>38</strong></div>
+                            <div class="dl-item"><span class="ldot" style="background:#ef4444;border-radius:2px"></span>Critical <strong>11</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-panel" style="margin-top:20px;">
+                <div class="panel-header-flex">
+                    <div class="title-with-icon-small"><i class="ph ph-clock"></i><h2>Recent Activity</h2></div>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="act-user"><span class="dot-blue"></span><span class="name">Rajesh Kumar</span><span class="tag">Credit</span></div>
+                        <div class="act-right"><span class="badge badge-low">LOW</span><span class="action-text">AUTO APPROVE</span><span class="time">2m ago</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="act-user"><span class="dot-red"></span><span class="name">Priya Sharma</span><span class="tag">Fraud</span></div>
+                        <div class="act-right"><span class="badge badge-high">HIGH</span><span class="action-text error">REVIEW REQUIRED</span><span class="time">15m ago</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="act-user"><span class="dot-orange"></span><span class="name">Amit Patel</span><span class="tag">Churn</span></div>
+                        <div class="act-right"><span class="badge badge-med">MEDIUM</span><span class="action-text warn">FLAGGED</span><span class="time">1h ago</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════ CREDIT ASSESSMENT ══════════════ -->
+        <div id="page-credit" class="page">
+            <header class="top-header">
+                <div class="header-titles">
+                    <div class="title-with-icon"><i class="ph ph-shield-check"></i><h1>Credit Assessment</h1></div>
+                    <p>Enter customer details to predict their Credit Health Score (0–100)</p>
+                </div>
+            </header>
+            <div class="predict-layout">
+                <div class="input-panel">
+                    <h3 class="panel-title"><i class="ph ph-sliders"></i> Customer Details</h3>
+                    <div class="form-grid" id="credit-form">
+                        <!-- injected by JS (shared fields) -->
+                    </div>
+                    <button class="btn-predict" id="btn-credit-predict">
+                        <i class="ph ph-lightning"></i> Run Credit Assessment
+                    </button>
+                </div>
+                <div class="result-panel" id="credit-result" style="display:none;">
+                    <h3 class="panel-title"><i class="ph ph-chart-pie-slice"></i> Result</h3>
+                    <div class="score-ring-wrap">
+                        <svg class="score-ring" viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                            <circle class="ring-fill" id="credit-ring-fill" cx="60" cy="60" r="50"
+                                stroke-dasharray="314" stroke-dashoffset="314"/>
+                        </svg>
+                        <div class="ring-label">
+                            <span class="ring-value" id="credit-score-val">—</span>
+                            <span class="ring-sub">Credit Score</span>
+                        </div>
+                    </div>
+                    <div class="result-verdict" id="credit-verdict"></div>
+                    <div class="result-meta" id="credit-meta"></div>
+                </div>
+                <div class="result-panel empty-result" id="credit-empty">
+                    <i class="ph ph-shield-check empty-icon"></i>
+                    <p>Fill in the customer details and click<br><strong>Run Credit Assessment</strong> to see the result.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════ CHURN PREDICTION ══════════════ -->
+        <div id="page-churn" class="page">
+            <header class="top-header">
+                <div class="header-titles">
+                    <div class="title-with-icon"><i class="ph ph-user-minus"></i><h1>Churn Prediction</h1></div>
+                    <p>Enter customer details to predict their probability of churning</p>
+                </div>
+            </header>
+            <div class="predict-layout">
+                <div class="input-panel">
+                    <h3 class="panel-title"><i class="ph ph-sliders"></i> Customer Details</h3>
+                    <div class="form-grid" id="churn-form"></div>
+                    <button class="btn-predict" id="btn-churn-predict">
+                        <i class="ph ph-lightning"></i> Predict Churn
+                    </button>
+                </div>
+                <div class="result-panel" id="churn-result" style="display:none;">
+                    <h3 class="panel-title"><i class="ph ph-chart-pie-slice"></i> Result</h3>
+                    <div class="score-ring-wrap">
+                        <svg class="score-ring" viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                            <circle class="ring-fill" id="churn-ring-fill" cx="60" cy="60" r="50"
+                                stroke-dasharray="314" stroke-dashoffset="314"/>
+                        </svg>
+                        <div class="ring-label">
+                            <span class="ring-value" id="churn-prob-val">—</span>
+                            <span class="ring-sub">Churn Risk</span>
+                        </div>
+                    </div>
+                    <div class="result-verdict" id="churn-verdict"></div>
+                    <div class="result-meta" id="churn-meta"></div>
+                </div>
+                <div class="result-panel empty-result" id="churn-empty">
+                    <i class="ph ph-user-minus empty-icon"></i>
+                    <p>Fill in the customer details and click<br><strong>Predict Churn</strong> to see the result.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════ LEAD SCORING ══════════════ -->
+        <div id="page-lead" class="page">
+            <header class="top-header">
+                <div class="header-titles">
+                    <div class="title-with-icon"><i class="ph ph-users"></i><h1>Lead Scoring</h1></div>
+                    <p>Enter applicant details to predict their Loan Approval probability</p>
+                </div>
+            </header>
+            <div class="predict-layout">
+                <div class="input-panel">
+                    <h3 class="panel-title"><i class="ph ph-sliders"></i> Applicant Details</h3>
+                    <div class="form-grid" id="lead-form"></div>
+                    <button class="btn-predict" id="btn-lead-predict">
+                        <i class="ph ph-lightning"></i> Score Lead
+                    </button>
+                </div>
+                <div class="result-panel" id="lead-result" style="display:none;">
+                    <h3 class="panel-title"><i class="ph ph-chart-pie-slice"></i> Result</h3>
+                    <div class="score-ring-wrap">
+                        <svg class="score-ring" viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                            <circle class="ring-fill" id="lead-ring-fill" cx="60" cy="60" r="50"
+                                stroke-dasharray="314" stroke-dashoffset="314"/>
+                        </svg>
+                        <div class="ring-label">
+                            <span class="ring-value" id="lead-prob-val">—</span>
+                            <span class="ring-sub">Approval Odds</span>
+                        </div>
+                    </div>
+                    <div class="result-verdict" id="lead-verdict"></div>
+                    <div class="result-meta" id="lead-meta"></div>
+                </div>
+                <div class="result-panel empty-result" id="lead-empty">
+                    <i class="ph ph-users empty-icon"></i>
+                    <p>Fill in the applicant details and click<br><strong>Score Lead</strong> to see the result.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════ COMPLIANCE Q&A ══════════════ -->
+        <div id="page-compliance" class="page">
+            <header class="top-header">
+                <div class="header-titles">
+                    <div class="title-with-icon"><i class="ph ph-book-open"></i><h1>Compliance Q&A</h1></div>
+                    <p>Ask any RBI compliance question — powered by RAG + Groq LLaMA 3.3</p>
+                </div>
+            </header>
+            <div class="chat-layout">
+                <div class="chat-window" id="chat-window">
+                    <div class="chat-welcome">
+                        <i class="ph ph-robot"></i>
+                        <h3>RBI Compliance Assistant</h3>
+                        <p>Ask me anything about RBI regulations, credit policies, KYC norms, or banking compliance. I use your ChromaDB knowledge base and Groq LLaMA 3.3 to answer.</p>
+                    </div>
+                </div>
+                <div class="chat-input-row">
+                    <input type="text" id="compliance-query" class="chat-input"
+                        placeholder="e.g. What are RBI's KYC norms for new accounts?" />
+                    <button class="btn-predict chat-send" id="btn-compliance-send">
+                        <i class="ph ph-paper-plane-tilt"></i> Ask
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
